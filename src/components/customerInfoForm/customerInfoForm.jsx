@@ -28,6 +28,7 @@ function CustomerInfo() {
   return (
     <div>
       <h1>Step 2 Customer Information</h1>
+      <p>total</p>
       <form onSubmit={handleSubmit}>
         <input placeholder="Name" id="name" value={inputName} />
         <input placeholder="Street Address" id="address" value={inputAddress} />
