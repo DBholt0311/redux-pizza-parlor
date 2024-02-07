@@ -1,12 +1,22 @@
+
 //react states
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
+
+
+import {
+  HashRouter as Router,
+  Route,
+} from "react-router-dom/cjs/react-router-dom.min";
+
+
 //import APi
 import { fetchPizza } from '../PizzaApi/PizzaApi';
 
 function App() {
+
   const [pizzaList, setPizzaList] = useState([]);
 
   const refreshCart = () => {
@@ -39,6 +49,7 @@ function App() {
 
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
+
     </div>
   );
 }
