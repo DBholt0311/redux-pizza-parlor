@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 function CustomerInfo() {
   const dispatch = useDispatch();
+  
   let [customerToAdd, setCustomerToAdd] = useState({ name: '', address: '', city: '', zip: 0,})
   const handleNameChange = (event) => {
     setCustomerToAdd({
