@@ -1,22 +1,20 @@
-
 //react states
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
-
+//import List
+import PizzaList from '../PizzaList/PizzaList';
 
 import {
   HashRouter as Router,
   Route,
-} from "react-router-dom/cjs/react-router-dom.min";
-
+} from 'react-router-dom/cjs/react-router-dom.min';
 
 //import APi
 import { fetchPizza } from '../PizzaApi/PizzaApi';
 
 function App() {
-
   const [pizzaList, setPizzaList] = useState([]);
 
   const refreshCart = () => {
@@ -46,10 +44,9 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
       </header>
-
+      <PizzaList pizzaList={pizzaList} PizzaListRefreshCall={refreshCart} />
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
-
     </div>
   );
 }
