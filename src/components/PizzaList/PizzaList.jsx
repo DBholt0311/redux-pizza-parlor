@@ -7,9 +7,10 @@ function PizzaList({ pizzaList, PizzaListRefreshCall }) {
           //change value
 
           <ul key={pizzaIndex}>
-            <p>{pizzaData.name}</p>
-            <p>{pizzaData.description}</p>
-            <p>{pizzaData.price}</p>
+            <div>
+              <b>{pizzaData.name}</b>
+            </div>
+            {pizzaData.description} {''} ${pizzaData.price}
             {/* can add diff url for img later*/}
             {/* <img src={pizzaData.image_path} /> */}
           </ul>
