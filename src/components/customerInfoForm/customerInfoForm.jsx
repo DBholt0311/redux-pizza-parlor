@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+
 
 function CustomerInfo() {
   const [inputName, setInputName] = useState("");
