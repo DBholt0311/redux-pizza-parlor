@@ -1,45 +1,58 @@
+import axios from "axios";
 import React, { useState } from "react";
-
-
+import { useDispatch } from 'react-redux';
 function CustomerInfo() {
-  const [inputName, setInputName] = useState("");
-  const [inputAddress, setInputAddress] = useState("");
-  const [inputCity, setInputCity] = useState("");
-  const [inputZip, setInputZip] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatchEvent({
-      type: "CUSTOMER_INFO_ADD",
-      payload: {
-        name: inputName,
-        address: inputAddress,
-        city: inputCity,
-        zip: inputZip,
-      },
+  const dispatch = useDispatch();
+  let [customerToAdd, setCustomerToAdd] = useState({ name: '', address: '', city: '', zip: 0,})
+  const handleNameChange = (event) => {
+    setCustomerToAdd({
+      ...customerToAdd,
+      name: event.target.value,
     });
-
-    setInputName("");
-    setInputAddress("");
-    setInputCity("");
-    setInputZip("");
   };
+
+  const handleAddressChange = (event) => {
+    setCustomerToAdd({
+      ...customerToAdd,
+      address: event.target.value,
+    });
+  };
+
+  const handleCityChange = (event) => {
+    setCustomerToAdd({
+      ...customerToAdd,
+      city: event.target.value,
+    });
+  };
+  const handleZipChange = (event) => {
+    setCustomerToAdd({
+      ...customerToAdd,
+      zip: event.target.value,
+    });
+  };
+
+  const addCustomer = () => {
+    console.log(customerToAdd);
+    dispatch({ type: "CUSTOMER_TO_ADD", payload: customerToAdd});
+  };
+
 
   return (
     <div>
       <h1>Step 2 Customer Information</h1>
       <p>total</p>
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Name" id="name" value={inputName} />
-        <input placeholder="Street Address" id="address" value={inputAddress} />
-        <input placeholder="City" id="city" value={inputCity} />
-        <input placeholder="Zip" id="zip" value={inputZip} />
-        <button>Delivery</button>
-        <button>Pick-Up</button>
+      <form onSubmit={(event) => addCustomer(event)}>
+        <input onChange={handleNameChange} placeholder="Name" id="name" />
+        <input
+          onChange={handleAddressChange}
+          placeholder="Street Address"
+          id="address"
+        />
+        <input onChange={handleCityChange} placeholder="City" id="city" />
+        <input onChange={handleZipChange} placeholder="Zip" id="zip" />
         <button type="submit">Next</button>
       </form>
     </div>
   );
 }
-
 export default CustomerInfo;
