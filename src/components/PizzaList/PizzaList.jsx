@@ -1,23 +1,27 @@
-// function PizzaList({ pizzaList, PizzaListRefreshCall }) {
-//   return (
-//     <div>
-//       <h3>Step 1: Select Your Pizza!</h3>
-//       {pizzaList.map((pizzaData, pizzaIndex) => {
-//         return (
-//           //change value
+import { useSelector } from 'react-redux';
 
-//           <ul key={pizzaIndex}>
-//             <div>
-//               <b>{pizzaData.name}</b>
-//             </div>
-//             {pizzaData.description} {''} ${pizzaData.price}
-//             {/* can add diff url for img later*/}
-//             {/* <img src={pizzaData.image_path} /> */}
-//           </ul>
-//         );
-//       })}
-//     </div>
-//   );
-// }
+function PizzaList({ pizzaListRefreshCall }) {
+  let pizzaList = useSelector((store) => store.pizza);
+  return (
+    <section>
+      <h3>Step 1: Select Your Pizza!</h3>
 
-//export default PizzaList;
+      {pizzaList.map((pizza) => {
+        return (
+          //change value
+          <ul key={pizza.id}>
+            <div>
+              <b>{pizza.name}</b>
+            </div>
+            {pizza.description} {''} ${pizza.price}
+            {/* TODO: add once item.jsx is complete - pizzaListRefreshCall={pizzaListRefreshCall} */}
+            {/* can add diff url for img later*/}
+            {/* <img src={pizzaData.image_path} /> */}
+          </ul>
+        );
+      })}
+    </section>
+  );
+}
+
+export default PizzaList;
