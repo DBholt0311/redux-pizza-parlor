@@ -12,9 +12,6 @@ import {
   Route,
 } from 'react-router-dom/cjs/react-router-dom.min';
 
-//TODO: api.jsx not needed. delete once merge is good
-// import { fetchPizza } from '../PizzaApi/PizzaApi';
-
 function App() {
   const dispatch = useDispatch();
 
