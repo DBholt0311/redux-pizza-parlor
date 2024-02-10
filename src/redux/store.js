@@ -1,3 +1,4 @@
+
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
 
@@ -10,6 +11,7 @@ const pizza = (state = [], action) => {
   }
   return state;
 };
+
 
 const store = createStore(
   combineReducers({
