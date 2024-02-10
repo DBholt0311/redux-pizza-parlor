@@ -2,20 +2,16 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
 
 // Be sure to replace this reducer! 🙂
-const pizza = (state = [], action) => {
-  //dispatch call
-  if (action.type === 'SET_PIZZA_LIST') {
-    //return payload
-    return action.payload;
-  }
+const someReducer = (state = [], action) => {
   return state;
-};
+}
 
 const store = createStore(
   combineReducers({
-    pizza, // 👈 Be sure to replace this, too!
+    someReducer, // 👈 Be sure to replace this, too!
   }),
-  applyMiddleware(logger)
+  applyMiddleware(logger),
 );
+
 
 export default store;
