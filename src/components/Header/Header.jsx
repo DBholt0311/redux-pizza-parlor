@@ -11,6 +11,9 @@ function Header({ title }) {
         <li>
           <Link to="/customerInfo">Customer Info</Link>
         </li>
+        <li>
+          <Link to="/Menu">Menu</Link>
+        </li>
       </ul>
     </div>
   );

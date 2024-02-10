@@ -5,7 +5,7 @@ import axios from "axios";
 import "./App.css";
 import CustomerInfo from "../customerInfoForm/customerInfoForm";
 import Header from "../Header/Header";
-
+import Home from "../Home/Home";
 //import List
 import PizzaList from "../PizzaList/PizzaList";
 
@@ -41,13 +41,16 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+        <Route path="/" exact>
+        <Home />
+        </Route>
         <Route path="/customerInfo" exact>
           <CustomerInfo />
         </Route>
-        <img src="images/pizza_photo.png" />
-        <p>Pizza is great.</p>
+        <Route path="/Menu" exact>
+        <PizzaList pizzaListRefreshCall={fetchPizza} />  
+        </Route>
 
-        <PizzaList pizzaListRefreshCall={fetchPizza} />
         {/* TODO: add call once item.jsx is complete */}
         {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
       </Router>
