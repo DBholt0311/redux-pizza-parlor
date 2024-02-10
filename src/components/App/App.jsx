@@ -40,12 +40,13 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
       </header>
-      <PizzaList pizzaListRefreshCall={fetchPizza} />
-      {/* TODO: add call once item.jsx is complete */}
-      {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
 
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
+
+      <PizzaList pizzaListRefreshCall={fetchPizza} />
+      {/* TODO: add call once item.jsx is complete */}
+      {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
     </div>
   );
 }
