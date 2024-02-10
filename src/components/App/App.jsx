@@ -6,7 +6,6 @@ import './App.css';
 
 //import List
 import PizzaList from '../PizzaList/PizzaList';
-import Checkout from '../Checkout/Checkout';
 
 import {
   HashRouter as Router,
@@ -41,19 +40,12 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
       </header>
-      <Router>
-        <Route path="/" exact>
-          <PizzaList pizzaListRefreshCall={fetchPizza} />
-          {/* TODO: add call once item.jsx is complete */}
-          {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
+      <PizzaList pizzaListRefreshCall={fetchPizza} />
+      {/* TODO: add call once item.jsx is complete */}
+      {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
 
-          <img src="images/pizza_photo.png" />
-          <p>Pizza is great.</p>
-        </Route>
-        <Route path="/checkout">
-          <Checkout />
-        </Route>
-      </Router>
+      <img src="images/pizza_photo.png" />
+      <p>Pizza is great.</p>
     </div>
   );
 }
