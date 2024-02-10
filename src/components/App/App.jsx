@@ -1,32 +1,34 @@
 //react states
-import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+import CustomerInfo from "../customerInfoForm/customerInfoForm";
+import Header from "../Header/Header";
 
 //import List
-import PizzaList from '../PizzaList/PizzaList';
+import PizzaList from "../PizzaList/PizzaList";
 
 import {
   HashRouter as Router,
   Route,
-} from 'react-router-dom/cjs/react-router-dom.min';
+} from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   const dispatch = useDispatch();
 
   //TODO: changed to use reducer from store
   const fetchPizza = () => {
-    console.log('In the FETCH function!');
+    console.log("In the FETCH function!");
     //axios call to server
     axios
-      .get('/api/pizza')
+      .get("/api/pizza")
       .then((response) => {
         // send data to data to redux store
-        dispatch({ type: 'SET_PIZZA_LIST', payload: response.data });
+        dispatch({ type: "SET_PIZZA_LIST", payload: response.data });
       })
       .catch((error) => {
-        console.log('ERROR:', error);
+        console.log("ERROR:", error);
       });
   };
 
@@ -37,16 +39,18 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
-      </header>
+      <Router>
+        <Header />
+        <Route path="/customerInfo" exact>
+          <CustomerInfo />
+        </Route>
+        <img src="images/pizza_photo.png" />
+        <p>Pizza is great.</p>
 
-      <img src="images/pizza_photo.png" />
-      <p>Pizza is great.</p>
-
-      <PizzaList pizzaListRefreshCall={fetchPizza} />
-      {/* TODO: add call once item.jsx is complete */}
-      {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
+        <PizzaList pizzaListRefreshCall={fetchPizza} />
+        {/* TODO: add call once item.jsx is complete */}
+        {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
+      </Router>
     </div>
   );
 }
