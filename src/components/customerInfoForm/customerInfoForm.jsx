@@ -65,8 +65,10 @@ function CustomerInfo() {
         />
         <input onChange={handleCityChange} placeholder="City" id="city" />
         <input onChange={handleZipChange} placeholder="Zip" id="zip" />
-        <input type="checkbox" onChange={handleTypeDelivery} />
-        <input type="checkbox" onChange={handleTypePickup} />
+        <input type="checkbox" onChange={handleTypeDelivery} id="delivery" name="delivery" />
+        <label for="delivery">Delivery</label>        
+        <input type="checkbox" onChange={handleTypePickup} id="pickup" name="pickup" />
+        <label for="pickup">Pickup</label>        
         <button type="submit">Next</button>
       </form>
     </div>
