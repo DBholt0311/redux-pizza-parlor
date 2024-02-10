@@ -8,7 +8,20 @@ function PizzaListItem ({ pizza }) {
 
   const addToCart = (event) => {
     console.log('Adding pizza To Cart:', pizza);
-    setInCart([...inCart, pizza.id]);//setting cart to original array plus new pizza
+    setInCart([...inCart, pizza.id]);
+};
+
+const removeFromCart = () => {
+  console.log('Removing pizza from cart:', pizza);
+  setInCart(prevCart => prevCart.filter(itemId => itemId !== pizza.id));
+};
+
+const toggleCart = () => {
+  if (inCart.includes(pizza.id)) {
+    removeFromCart();
+  } else {
+    addToCart();
+  }
 };
 
 
@@ -24,7 +37,9 @@ function PizzaListItem ({ pizza }) {
         <p className="price">Price: {pizza.price} </p>
         </div>
         <center>
-        <button onClick={addToCart}>Add</button>
+        <span className="cartToggle" onClick={toggleCart}>
+            {inCart.includes(pizza.id) ? 'Remove' : 'Add'}
+        </span>
         </center>
       </div>
       </div>
