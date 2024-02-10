@@ -43,15 +43,7 @@ function App() {
 
   return (
     <div className="App">
-<Router>
-<Header />
-<Route path="/Home" exact>
-<Home />
-</Route>
-  <Route path="/customerInfo" exact>
-    <CustomerInfo />
-  </Route>
-</Router>
+
 
     </div>
   );
