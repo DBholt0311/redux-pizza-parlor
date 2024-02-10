@@ -1,18 +1,19 @@
 import React from 'react';
+import './PizzaListItem.css'; 
 
 
 function PizzaListItem ({ pizza }) {
 
     return (
-      <div>
+      <div className="pizzaContainer">
         <div>
         <img src={pizza.image_path} alt={pizza.name} />
         <br />
           <b>{pizza.name}</b>
-        <br />
+          <div className="pizzaInfo">
         {pizza.description}
-        <br />
-        Price: {typeof pizza.price === 'number' ? `$${pizza.price.toFixed(2)}` : ''} {/* If pizza price is a number, set it to two decimal places after. Else an empty string */}
+        <p className="price">Price: {pizza.price} </p>
+        </div>
       </div>
       </div>
     );
