@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-
+import CustomerInfo from '../customerInfoForm/customerInfoForm';
+import Header from '../Header/Header';
+import Home from '../Home/Home';
 //import List
 import PizzaList from '../PizzaList/PizzaList';
-import Checkout from '../Checkout/Checkout';
+import Admin from '../Admin/Admin';
 
 import {
   HashRouter as Router,
@@ -38,20 +40,26 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
-      </header>
       <Router>
+        <Header />
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/customerInfo" exact>
+          <CustomerInfo />
+        </Route>
+        <img src="images/pizza_photo.png" />
         <Route path="/" exact>
           <PizzaList pizzaListRefreshCall={fetchPizza} />
-          {/* TODO: add call once item.jsx is complete */}
-          {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
-
-          <img src="images/pizza_photo.png" />
-          <p>Pizza is great.</p>
         </Route>
-        <Route path="/checkout">
-          <Checkout />
+        <Route path="/Menu" exact>
+          <PizzaList pizzaListRefreshCall={fetchPizza} />
+        </Route>
+        {/* TODO: add call once item.jsx is complete */}
+        {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
+
+        <Route path="/admin" exact>
+          <Admin />
         </Route>
       </Router>
     </div>
