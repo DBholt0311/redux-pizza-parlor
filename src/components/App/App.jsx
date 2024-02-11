@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 
 //import List
 import PizzaList from "../PizzaList/PizzaList";
+import Admin from "../Admin/Admin";
 
 import {
   HashRouter as Router,
@@ -45,12 +46,18 @@ function App() {
           <CustomerInfo />
         </Route>
         <img src="images/pizza_photo.png" />
-        <p>Pizza is great.</p>
-
-        <PizzaList pizzaListRefreshCall={fetchPizza} />
+        <Route path="/" exact>
+          <PizzaList pizzaListRefreshCall={fetchPizza} />
+        </Route>
         {/* TODO: add call once item.jsx is complete */}
         {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
+
+        <Route path="/admin" exact>
+          <Admin />
+        </Route>
+
       </Router>
+
     </div>
   );
 }
