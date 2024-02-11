@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 function CustomerInfo() {
   const dispatch = useDispatch();
   
-  let [customerToAdd, setCustomerToAdd] = useState({ name: '', address: '', city: '', zip: 0,})
+  let [customerToAdd, setCustomerToAdd] = useState({ name: '', address: '', city: '', zip: 0, type: ''})
   const handleNameChange = (event) => {
     setCustomerToAdd({
       ...customerToAdd,
@@ -32,6 +32,20 @@ function CustomerInfo() {
     });
   };
 
+  const handleTypeDelivery = (event) => {
+    setCustomerToAdd({
+      ...customerToAdd,
+      type: "delivery",
+    });
+  };
+
+  const handleTypePickup = (event) => {
+    setCustomerToAdd({
+      ...customerToAdd,
+      type: "pickup",
+    });
+  };
+
   const addCustomer = () => {
     console.log(customerToAdd);
     dispatch({ type: "CUSTOMER_TO_ADD", payload: customerToAdd});
@@ -51,6 +65,10 @@ function CustomerInfo() {
         />
         <input onChange={handleCityChange} placeholder="City" id="city" />
         <input onChange={handleZipChange} placeholder="Zip" id="zip" />
+        <input type="checkbox" onChange={handleTypeDelivery} id="delivery" name="delivery" />
+        <label for="delivery">Delivery</label>        
+        <input type="checkbox" onChange={handleTypePickup} id="pickup" name="pickup" />
+        <label for="pickup">Pickup</label>        
         <button type="submit">Next</button>
       </form>
     </div>
