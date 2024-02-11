@@ -67,7 +67,7 @@ function Admin(){
                             <TableCell>{order.customer_name}</TableCell>
                             <TableCell>{formatDate(order.time)}</TableCell>
                             <TableCell>{order.type}</TableCell>
-                            <TableCell>{order.total}</TableCell>
+                            <TableCell>{"$"+order.total}</TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
