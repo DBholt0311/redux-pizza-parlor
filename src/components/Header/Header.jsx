@@ -14,6 +14,9 @@ function Header({ title }) {
         <li>
           <Link to="/Menu">Menu</Link>
         </li>
+        <li>
+          <Link to="/checkout">Checkout</Link>
+        </li>
       </ul>
     </div>
   );

@@ -14,29 +14,28 @@ function Checkout() {
     axios
       .post('/api/pizza', { pizza, cost })
       .then((response) => {
-        console.log({pizza, cost})
+        console.log({ pizza, cost });
       })
       .catch((error) => {
         console.log('issue with post', error);
       });
 
-    axios.post('/api/order', {
-      customer_name,
-      street_address,
-      city,
-      zip,
-      type,
-      total,
-      pizzas
-
-    })
-    .then((response) => {
-      console.log({total})
-    })
-    .catch((error) => {
-      console.log('issue with pizza post', error);
-    });
-    .then 
+    axios
+      .post('/api/order', {
+        customer_name,
+        street_address,
+        city,
+        zip,
+        type,
+        total,
+        pizzas,
+      })
+      .then((response) => {
+        console.log({ total });
+      })
+      .catch((error) => {
+        console.log('issue with pizza post', error);
+      }).then;
 
     history.push('/');
   };
