@@ -8,12 +8,22 @@ const pizza = (state = [], action) => {
     //return payload
     return action.payload;
   }
+  if (action.type === 'ADD_PIZZA') {
+    return action.payload;
+  }
   return state;
 };
 
+const customerInfo = (state = [], action) => {
+  if (action.type === 'CUSTOMER_TO_ADD') {
+    return action.payload;
+  }
+  return state;
+};
 const store = createStore(
   combineReducers({
     pizza, // 👈 Be sure to replace this, too!
+    customerInfo,
   }),
   applyMiddleware(logger)
 );

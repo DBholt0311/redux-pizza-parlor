@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-function CustomerInfo() {
-  const dispatch = useDispatch();
+import { useHistory } from 'react-router-dom';
 
+function CustomerInfo() {
   let [customerToAdd, setCustomerToAdd] = useState({
     name: '',
     address: '',
@@ -10,6 +10,9 @@ function CustomerInfo() {
     zip: 0,
     type: '',
   });
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const handleNameChange = (event) => {
     setCustomerToAdd({
       ...customerToAdd,
@@ -54,6 +57,7 @@ function CustomerInfo() {
   const addCustomer = () => {
     console.log(customerToAdd);
     dispatch({ type: 'CUSTOMER_TO_ADD', payload: customerToAdd });
+    history.push('/checkout');
   };
 
   return (

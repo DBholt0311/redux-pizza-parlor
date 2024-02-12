@@ -1,9 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PizzaListItem from '../PizzaListItem/PizzaListItem';
 import React from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function PizzaList() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   //removed the pizzaRefreshCallback due to not needed. Cart is using useState
   let pizzaList = useSelector((store) => store.pizza);
   const [cart, setCart] = useState([]);
@@ -24,6 +27,14 @@ function PizzaList() {
     return totalCost.toFixed(2);
   };
 
+  const submitPizza = () => {
+    dispatch({
+      type: 'ADD_PIZZA',
+      payload: { name: cart.name, price: cart.price },
+    });
+    history.push('/customerInfo');
+  };
+
   return (
     <div className="pizzaCardContainer">
       {pizzaList.map((pizza, index) => (
@@ -35,7 +46,11 @@ function PizzaList() {
           inCart={cart.includes(pizza)}
         />
       ))}
+
       <div className="totalCost">Total Cost: ${totalCostCalculation()}</div>
+      <button type="submit" onClick={submitPizza}>
+        Next
+      </button>
     </div>
   );
 }
