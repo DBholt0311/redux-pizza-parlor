@@ -40,7 +40,6 @@ function PizzaList() { //removed the pizzaRefreshCallback due to not needed. Car
           inCart={cart.includes(pizza)}
         />
       ))}
-      <div className="totalCost">Total Cost: ${totalCostReducer.totalCost}</div> {/* Accessing totalCostReducer.totalCost */}
     </div>
   );
 }
