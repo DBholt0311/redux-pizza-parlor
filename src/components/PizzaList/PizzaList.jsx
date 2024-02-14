@@ -30,7 +30,7 @@ function PizzaList() {
   const submitPizza = () => {
     dispatch({
       type: 'ADD_PIZZA',
-      payload: { name: cart.name, price: cart.price },
+      payload: cart,
     });
     history.push('/customerInfo');
   };
