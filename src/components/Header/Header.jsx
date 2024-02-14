@@ -9,7 +9,7 @@ function Header({ title }) {
   return (
     <div>
       <h1 className="App-title">Prime Pizza</h1>
-      <div className="totalCostHeader">Total Cost: ${totalCostReducer.totalCost}</div> {/* Accessing the totalCostReducer defined in above variable line 9 and accessing totalCost property */}
+      <div className="totalCostHeader"><b>Total Cost: ${totalCostReducer.totalCost}</b></div> {/* Accessing the totalCostReducer defined in above variable line 9 and accessing totalCost property */}
 
       <ul>
         <li>
