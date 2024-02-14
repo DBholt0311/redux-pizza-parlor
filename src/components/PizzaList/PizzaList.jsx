@@ -9,23 +9,26 @@ function PizzaList() {
   const history = useHistory();
   //removed the pizzaRefreshCallback due to not needed. Cart is using useState
   let pizzaList = useSelector((store) => store.pizza);
+  let totalCostReducer = useSelector((store) => store.totalCostReducer);
   const [cart, setCart] = useState([]);
 
   const addToCart = (pizza) => {
     setCart([...cart, pizza]);
+    dispatch({ type: 'ADD_TO_CART', payload: pizza });
   };
 
   const removeFromCart = (pizzaToRemove) => {
     setCart(cart.filter((item) => item !== pizzaToRemove));
+    dispatch({ type: 'REMOVE_FROM_CART', payload: pizzaToRemove });
   };
 
-  const totalCostCalculation = () => {
-    let totalCost = 0;
-    cart.forEach((item) => {
-      totalCost += parseFloat(item.price);
-    });
-    return totalCost.toFixed(2);
-  };
+  // const totalCostCalculation = () => {
+  //   let totalCost = 0;
+  //   cart.forEach((item) => {
+  //     totalCost += parseFloat(item.price);
+  //   });
+  //   return totalCost.toFixed(2);
+  // };
 
   const submitPizza = () => {
     dispatch({
@@ -46,8 +49,8 @@ function PizzaList() {
           inCart={cart.includes(pizza)}
         />
       ))}
-
-      <div className="totalCost">Total Cost: ${totalCostCalculation()}</div>
+      {/* <div className="totalCost">Total Cost: ${totalCostReducer.totalCost}</div>{' '}
+      Accessing totalCostReducer.totalCost */}
       <button type="submit" onClick={submitPizza}>
         Next
       </button>
