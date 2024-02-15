@@ -1,5 +1,8 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
+import { takeEvery, put } from 'redux-saga/effects';
+import axios from 'axios';
 
 // Be sure to replace this reducer! 🙂
 const pizza = (state = [], action) => {
@@ -46,6 +49,41 @@ const totalCostReducer = (state = { totalCost: 0.0 }, action) => {
   }
 };
 
+// saga stuff
+
+const sagaMiddleware = createSagaMiddleware();
+
+// SAGA Generator Functions
+function* getOrder(action) {
+  try {
+    const elementsResponse = yield axios({
+      method: 'GET',
+      url: '/api/order',
+    });
+    yield put({ type: 'SET_PIZZA_LIST', payload: elementsResponse.data });
+  } catch (error) {
+    console.log('ERROR:', error);
+  }
+}
+
+function* postOrder(action) {
+  try {
+    yield axios({
+      method: 'POST',
+      url: '/api/order',
+      data: action.payload,
+    });
+    yield put({ type: 'GET_ORDER' });
+  } catch (error) {
+    console.log('mistake at the post', error);
+  }
+}
+
+function* watcherSaga() {
+  yield takeEvery('GET_ORDER', getOrder);
+  yield takeEvery('POST_ORDER', postOrder);
+}
+
 const store = createStore(
   combineReducers({
     pizza, // 👈 Be sure to replace this, too!
@@ -53,7 +91,9 @@ const store = createStore(
     cart,
     totalCostReducer,
   }),
-  applyMiddleware(logger)
+  applyMiddleware(logger, sagaMiddleware)
 );
+
+sagaMiddleware.run(watcherSaga);
 
 export default store;

@@ -4,30 +4,55 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 function Checkout(pizzaListRefreshCall) {
+  const dispatch = useDispatch();
   const history = useHistory();
   let customerInfo = useSelector((store) => store.customerInfo);
   let cart = useSelector((store) => store.cart);
   let totalCostReducer = useSelector((store) => store.totalCostReducer);
+  let [orderCheckout, setOrderCheckout] = useState({
+    customer_name: customerInfo.name,
+    street_address: customerInfo.address,
+    city: customerInfo.city,
+    zip: customerInfo.zip,
+    type: customerInfo.type,
+    total: totalCostReducer.totalCost,
+    pizzas: cart,
+  });
+  console.log(orderCheckout);
+  console.log(customerInfo.name);
 
-  const handleCompleteOrder = () => {
-    // event.preventDefault();
+  const handleCompleteOrder = (event) => {
+    event.preventDefault();
 
-    axios
-      .post('/api/order', {
-        customer_name: customerInfo.name,
-        street_address: customerInfo.address,
-        city: customerInfo.city,
-        zip: customerInfo.zip,
-        type: customerInfo.type,
-        total: totalCostReducer.totalCost,
-        pizza: cart.name,
-      })
-      .then((response) => {
-        pizzaListRefreshCall();
-      })
-      .catch((error) => {
-        console.log('issue with order post', error);
-      });
+    // axios
+    //   .post('/api/order', {
+    //     customer_name: customerInfo.name,
+    //     street_address: customerInfo.address,
+    //     city: customerInfo.city,
+    //     zip: customerInfo.zip,
+    //     type: customerInfo.type,
+    //     total: totalCostReducer.totalCost,
+    //     pizza: cart.name,
+    //   })
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     pizzaListRefreshCall();
+    //   })
+    //   .catch((error) => {
+    //     console.log('issue with order post', error);
+    //   });
+    dispatch({ type: 'POST_ORDER', payload: orderCheckout });
+
+    setOrderCheckout({
+      customer_name: '',
+      street_address: '',
+      city: '',
+      zip: 0,
+      type: '',
+      total: 0,
+      pizzas: '',
+    });
+
     history.push('/');
   };
 
