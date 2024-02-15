@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-function Checkout(pizzaListRefreshCall) {
+function Checkout() {
   const dispatch = useDispatch();
   const history = useHistory();
   let customerInfo = useSelector((store) => store.customerInfo);
@@ -43,16 +43,10 @@ function Checkout(pizzaListRefreshCall) {
     //   });
     dispatch({ type: 'POST_ORDER', payload: orderCheckout });
 
-    setOrderCheckout({
-      customer_name: '',
-      street_address: '',
-      city: '',
-      zip: 0,
-      type: '',
-      total: 0,
-      pizzas: '',
-    });
-
+    // dispatch({
+    //   type: '',
+    //   payload: '',
+    // });
     history.push('/');
   };
 

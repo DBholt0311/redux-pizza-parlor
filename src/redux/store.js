@@ -67,6 +67,7 @@ function* getOrder(action) {
 }
 
 function* postOrder(action) {
+  console.log(action.payload);
   try {
     yield axios({
       method: 'POST',
