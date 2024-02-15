@@ -59,7 +59,7 @@ function App() {
         {/* TODO: add call once item.jsx is complete */}
         {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
         <Route path="/checkout">
-          <Checkout />
+          <Checkout pizzaListRefreshCall={fetchPizza} />
         </Route>
         <Route path="/admin" exact>
           <Admin />

@@ -1,16 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-function Checkout() {
+function Checkout(pizzaListRefreshCall) {
   const history = useHistory();
-  const customerInfo = useSelector((state) => state.customerInfo);
-  const cart = useSelector((state) => state.cart);
+  let customerInfo = useSelector((store) => store.customerInfo);
+  let cart = useSelector((store) => store.cart);
+  let totalCostReducer = useSelector((store) => store.totalCostReducer);
 
-  const handleCompleteOrder = (event) => {
+  const handleCompleteOrder = () => {
     // event.preventDefault();
 
+    axios
+      .post('/api/order', {
+        customer_name: customerInfo.name,
+        street_address: customerInfo.address,
+        city: customerInfo.city,
+        zip: customerInfo.zip,
+        type: customerInfo.type,
+        total: totalCostReducer.totalCost,
+        pizza: cart.name,
+      })
+      .then((response) => {
+        pizzaListRefreshCall();
+      })
+      .catch((error) => {
+        console.log('issue with order post', error);
+      });
     history.push('/');
   };
 
