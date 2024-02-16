@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 function CustomerInfo() {
   const dispatch = useDispatch();
@@ -76,8 +77,10 @@ function CustomerInfo() {
         />
       <input onChange={handleCityChange} placeholder="City" id="city" />
       <input onChange={handleZipChange} placeholder="Zip" id="zip" />
-      <FormControlLabel required control={<Checkbox onChange={handleTypeDelivery}/>} label="Delivery" />
-      <FormControlLabel required control={<Checkbox onChange={handleTypePickup}/>} label="Pickup" />      
+      <RadioGroup>
+      <FormControlLabel value="female" control={<Radio onChange={handleTypeDelivery} />} label="Delivery" />
+        <FormControlLabel value="male" control={<Radio onChange={handleTypePickup}/>} label="Pickup" />
+      </RadioGroup>
       <Button type="submit" onClick={(event) => addCustomer(event)}>
         Next
       </Button>
