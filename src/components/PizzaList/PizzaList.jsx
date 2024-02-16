@@ -68,7 +68,7 @@ function PizzaList() {
       {/* <div className="totalCost">Total Cost: ${totalCostReducer.totalCost}</div>{' '}
       Accessing totalCostReducer.totalCost */}
       <button type="submit" onClick={submitPizza}>
-        <Link to="/customerInfo">Next</Link>
+        <Link to="/CustomerInfo">Next</Link>
       </button>
     </div>
   );
