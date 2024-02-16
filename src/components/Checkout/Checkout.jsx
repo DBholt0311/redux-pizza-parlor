@@ -24,29 +24,8 @@ function Checkout() {
   const handleCompleteOrder = (event) => {
     event.preventDefault();
 
-    // axios
-    //   .post('/api/order', {
-    //     customer_name: customerInfo.name,
-    //     street_address: customerInfo.address,
-    //     city: customerInfo.city,
-    //     zip: customerInfo.zip,
-    //     type: customerInfo.type,
-    //     total: totalCostReducer.totalCost,
-    //     pizza: cart.name,
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     pizzaListRefreshCall();
-    //   })
-    //   .catch((error) => {
-    //     console.log('issue with order post', error);
-    //   });
     dispatch({ type: 'POST_ORDER', payload: orderCheckout });
 
-    // dispatch({
-    //   type: '',
-    //   payload: '',
-    // });
     history.push('/');
   };
 

@@ -58,7 +58,7 @@ function* getOrder(action) {
   try {
     const elementsResponse = yield axios({
       method: 'GET',
-      url: '/api/order',
+      url: '/api/pizza',
     });
     yield put({ type: 'SET_PIZZA_LIST', payload: elementsResponse.data });
   } catch (error) {
