@@ -58,8 +58,3 @@
   color: #0ffef7;
   text-decoration: none;
 }
-.totalCostHeader {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
