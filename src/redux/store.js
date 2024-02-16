@@ -1,3 +1,4 @@
+
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
@@ -21,6 +22,7 @@ const cart = (state = [], action) => {
   return state;
 };
 
+<<<<<<< HEAD
 const customerInfo = (state = [], action) => {
   if (action.type === 'CUSTOMER_TO_ADD') {
     return action.payload;
@@ -29,26 +31,40 @@ const customerInfo = (state = [], action) => {
 };
 
 const totalCostReducer = (state = { totalCost: 0.0 }, action) => {
+=======
+
+// Total Cost Reducer
+const totalCostReducer = (state = { totalCost: 0.00 }, action) => {
+>>>>>>> main
   switch (action.type) {
     case 'ADD_TO_CART':
       return {
         ...state,
+<<<<<<< HEAD
         totalCost: (
           parseFloat(state.totalCost) + parseFloat(action.payload.price)
         ).toFixed(2),
+=======
+        totalCost: (parseFloat(state.totalCost) + parseFloat(action.payload.price)).toFixed(2)
+>>>>>>> main
       };
     case 'REMOVE_FROM_CART':
       return {
         ...state,
+<<<<<<< HEAD
         totalCost: (
           parseFloat(state.totalCost) - parseFloat(action.payload.price)
         ).toFixed(2),
+=======
+        totalCost: (parseFloat(state.totalCost) - parseFloat(action.payload.price)).toFixed(2)
+>>>>>>> main
       };
     default:
       return state;
   }
 };
 
+<<<<<<< HEAD
 // saga stuff
 
 const sagaMiddleware = createSagaMiddleware();
@@ -84,9 +100,12 @@ function* watcherSaga() {
   yield takeEvery('GET_ORDER', getOrder);
   yield takeEvery('POST_ORDER', postOrder);
 }
+=======
+>>>>>>> main
 
 const store = createStore(
   combineReducers({
+    totalCostReducer,
     pizza, // 👈 Be sure to replace this, too!
     customerInfo,
     cart,

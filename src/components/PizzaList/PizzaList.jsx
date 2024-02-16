@@ -10,6 +10,7 @@ function PizzaList() {
   //removed the pizzaRefreshCallback due to not needed. Cart is using useState
   let pizzaList = useSelector((store) => store.pizza);
   let totalCostReducer = useSelector((store) => store.totalCostReducer);
+
   const [cart, setCart] = useState([]);
 
   const addToCart = (pizza) => {
@@ -22,9 +23,10 @@ function PizzaList() {
     dispatch({ type: 'REMOVE_FROM_CART', payload: pizzaToRemove });
   };
 
+  //Removed due to now using reducer
   // const totalCostCalculation = () => {
   //   let totalCost = 0;
-  //   cart.forEach((item) => {
+  //   cart.forEach(item => {
   //     totalCost += parseFloat(item.price);
   //   });
   //   return totalCost.toFixed(2);
@@ -49,6 +51,7 @@ function PizzaList() {
           inCart={cart.includes(pizza)}
         />
       ))}
+
       {/* <div className="totalCost">Total Cost: ${totalCostReducer.totalCost}</div>{' '}
       Accessing totalCostReducer.totalCost */}
       <button type="submit" onClick={submitPizza}>
