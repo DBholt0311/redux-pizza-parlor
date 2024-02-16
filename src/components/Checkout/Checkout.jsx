@@ -27,6 +27,7 @@ function Checkout() {
     dispatch({ type: 'POST_ORDER', payload: orderCheckout });
 
     history.push('/');
+    
   };
 
   return (

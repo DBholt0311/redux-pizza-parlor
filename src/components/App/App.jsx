@@ -1,16 +1,18 @@
+
 //react states
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './App.css';
+// components
 import CustomerInfo from '../customerInfoForm/customerInfoForm'
 import Header from '../Header/Header';
 import Home from '../Home/Home';
-//import List
 import PizzaList from '../PizzaList/PizzaList';
 import Admin from '../Admin/Admin';
 import Checkout from '../Checkout/Checkout';
-
+import styles from './App.module.css';
+import Footer from '../Footer/Footer'
+//router
 import {
   HashRouter as Router,
   Route,
@@ -40,9 +42,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Router>
         <Header />
+        <main>
         <Route path="/" exact>
           <Home />
         </Route>
@@ -55,6 +58,8 @@ function App() {
         <Route path="/checkout">
           <Checkout pizzaListRefreshCall={fetchPizza} />
         </Route>
+        <Footer />
+        </main>
         <Route path="/admin" exact>
           <Admin />
         </Route>

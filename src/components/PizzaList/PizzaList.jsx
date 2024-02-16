@@ -1,8 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
-import PizzaListItem from '../PizzaListItem/PizzaListItem';
-import React from 'react';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import PizzaListItem from "../PizzaListItem/PizzaListItem";
+import React from "react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+import Grid from "@mui/material/Grid";
 
 function PizzaList() {
   const dispatch = useDispatch();
@@ -15,12 +18,12 @@ function PizzaList() {
 
   const addToCart = (pizza) => {
     setCart([...cart, pizza]);
-    dispatch({ type: 'ADD_TO_CART', payload: pizza });
+    dispatch({ type: "ADD_TO_CART", payload: pizza });
   };
 
   const removeFromCart = (pizzaToRemove) => {
     setCart(cart.filter((item) => item !== pizzaToRemove));
-    dispatch({ type: 'REMOVE_FROM_CART', payload: pizzaToRemove });
+    dispatch({ type: "REMOVE_FROM_CART", payload: pizzaToRemove });
   };
 
   //Removed due to now using reducer
@@ -34,28 +37,38 @@ function PizzaList() {
 
   const submitPizza = () => {
     dispatch({
-      type: 'ADD_PIZZA',
+      type: "ADD_PIZZA",
       payload: cart,
     });
-    history.push('/customerInfo');
+    history.push("/customerInfo");
   };
 
   return (
     <div className="pizzaCardContainer">
-      {pizzaList.map((pizza, index) => (
-        <PizzaListItem
+      <Grid container spacing ={2}>
+        {pizzaList.map((pizza, index) => (
+          <Grid
+          item
+          xs={8}
+          md={6}
+          lg={3}
           key={index}
-          pizza={pizza}
-          addToCart={addToCart}
-          removeFromCart={removeFromCart}
-          inCart={cart.includes(pizza)}
-        />
-      ))}
+          > 
+            <PizzaListItem
+              key={index}
+              pizza={pizza}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              inCart={cart.includes(pizza)}
+            />
+          </Grid>
+          ))}
+      </Grid>
 
       {/* <div className="totalCost">Total Cost: ${totalCostReducer.totalCost}</div>{' '}
       Accessing totalCostReducer.totalCost */}
       <button type="submit" onClick={submitPizza}>
-        Next
+        <Link to="/customerInfo">Next</Link>
       </button>
     </div>
   );

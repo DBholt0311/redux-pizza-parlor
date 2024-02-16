@@ -1,0 +1,65 @@
+.appTopper {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 10px;
+  background-color: #3b4095;
+  color: #d0dfea;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.appTopper h1 {
+  margin: 0 0 0.2em 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: #d0dfea;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.subtitle:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav li {
+  list-style: none;
+}
+
+.nav a {
+  color: #efefef;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav a:visited {
+  color: #ca0ffe;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #0ffef7;
+  text-decoration: none;
+}
+.totalCostHeader {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
