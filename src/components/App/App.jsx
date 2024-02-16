@@ -7,7 +7,7 @@ import axios from 'axios';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 import PizzaList from '../PizzaList/PizzaList';
-import CustomerInfo from '../CustomerInfoForm/CustomerInfoForm';
+import CustomerInfo from '../customerinfoForm/customerinfoForm';
 import Admin from '../Admin/Admin';
 import Checkout from '../Checkout/Checkout';
 import styles from './App.module.css';
