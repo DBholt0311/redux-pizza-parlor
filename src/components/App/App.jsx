@@ -49,18 +49,12 @@ function App() {
         <Route path="/customerInfo" exact>
           <CustomerInfo />
         </Route>
-        {/* img in list.jsx */}
-        {/* <img src="images/pizza_photo.png" /> */}
         <Route path="/Menu" exact>
           <PizzaList pizzaListRefreshCall={fetchPizza} />
         </Route>
-        {/* TODO: add call once item.jsx is complete */}
-        {/* <PizzaList pizzaListRefreshCall={fetchPizza} /> */}
-
         <Route path="/checkout">
           <Checkout pizzaListRefreshCall={fetchPizza} />
         </Route>
-
         <Route path="/admin" exact>
           <Admin />
         </Route>
