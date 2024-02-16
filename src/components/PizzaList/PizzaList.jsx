@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import PizzaListItem from "../PizzaListItem/PizzaListItem";
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import Grid from "@mui/material/Grid";
+
+import PizzaListItem from '../PizzaListItem/PizzaListItem';
 
 function PizzaList() {
   const dispatch = useDispatch();
