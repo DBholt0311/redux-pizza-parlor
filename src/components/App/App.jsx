@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 // components
-import CustomerInfo from '../customerInfoForm/customerInfoForm'
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 import PizzaList from '../PizzaList/PizzaList';
+import CustomerInfo from '../PizzaListItem/PizzaListItem';
 import Admin from '../Admin/Admin';
 import Checkout from '../Checkout/Checkout';
 import styles from './App.module.css';
