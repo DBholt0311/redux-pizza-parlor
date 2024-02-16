@@ -7,7 +7,7 @@ import axios from 'axios';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 import PizzaList from '../PizzaList/PizzaList';
-import CustomerInfo from '../CustomerInfoForm/CustomerInfoForm.jsx';
+import CustomerInfo from '../CustomerInfoForm/CustomerInfoForm';
 import Admin from '../Admin/Admin';
 import Checkout from '../Checkout/Checkout';
 import styles from './App.module.css';
@@ -46,7 +46,7 @@ function App() {
       <Router>
         <Header />
         <main>
-        <Route path="/Home" exact>
+        <Route path="/" exact>
           <Home />
         </Route>
         <Route path="/CustomerInfo" exact>
