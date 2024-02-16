@@ -1,5 +1,5 @@
 import React from 'react';
-import './PizzaListItem.css';
+import './PizzaListitem.css';
 
 function PizzaListItem({ pizza, addToCart, removeFromCart, inCart }) {
   // Removed original functions and imported them into PizzaList Component to add all items versus each item

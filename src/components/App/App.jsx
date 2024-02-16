@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import CustomerInfo from '../customerInfoForm/customerInfoForm';
+import CustomerInfo from '../customerInfoForm/customerInfoForm'
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 //import List
@@ -51,9 +51,6 @@ function App() {
         </Route>
         {/* img in list.jsx */}
         {/* <img src="images/pizza_photo.png" /> */}
-        <Route path="/" exact>
-          <PizzaList pizzaListRefreshCall={fetchPizza} />
-        </Route>
         <Route path="/Menu" exact>
           <PizzaList pizzaListRefreshCall={fetchPizza} />
         </Route>
