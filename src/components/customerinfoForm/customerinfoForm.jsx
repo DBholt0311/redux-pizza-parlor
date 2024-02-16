@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
@@ -8,7 +8,10 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 
+import styles from "./customerInfoForm.module.css";
+
 function CustomerInfo() {
+  let totalCostReducer = useSelector((store) => store.totalCostReducer);
   const dispatch = useDispatch();
 
   let [customerToAdd, setCustomerToAdd] = useState({
@@ -67,7 +70,9 @@ function CustomerInfo() {
   return (
     <div>
       <h1>Step 2 Customer Information</h1>
-      <p>total</p>
+      <div className={styles.totalCostHeader}>
+        Total Cost: {totalCostReducer.totalCost}
+      </div>{' '}
       <FormGroup>
         <input onChange={handleNameChange} placeholder="Name" id="name" />
         <input

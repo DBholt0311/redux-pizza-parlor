@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styles from './Header.module.css';
 
 function Header({ title }) {
-  let totalCostReducer = useSelector((store) => store.totalCostReducer);
 
   return (
     <div className={styles.appTopper}>
@@ -16,10 +14,6 @@ function Header({ title }) {
           <Link to="/Menu">Menu</Link>
         </li>
       </ul>
-      <div className={styles.totalCostHeader}>
-        Total Cost: {totalCostReducer.totalCost}
-      </div>{' '}
-      {/* Accessing the totalCostReducer defined in above variable line 9 and accessing totalCost property */}
     </div>
   );
 }
