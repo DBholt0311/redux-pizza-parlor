@@ -49,7 +49,7 @@ function App() {
         <Route path="/customerInfo" exact>
           <CustomerInfo />
         </Route>
-        <img src="images/pizza_photo.png" />
+        {/* <img src="images/pizza_photo.png" /> */}
         <Route path="/" exact>
           <PizzaList pizzaListRefreshCall={fetchPizza} />
         </Route>
