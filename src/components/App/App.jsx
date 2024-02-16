@@ -7,7 +7,7 @@ import axios from 'axios';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
 import PizzaList from '../PizzaList/PizzaList';
-import CustomerInfo from '../PizzaListItem/PizzaListItem';
+import CustomerInfo from '../CustomerInfoForm/CustomerInfoForm.jsx';
 import Admin from '../Admin/Admin';
 import Checkout from '../Checkout/Checkout';
 import styles from './App.module.css';
@@ -46,21 +46,21 @@ function App() {
       <Router>
         <Header />
         <main>
-        <Route path="/" exact>
+        <Route path="/Home" exact>
           <Home />
         </Route>
-        <Route path="/customerInfo" exact>
+        <Route path="/CustomerInfo" exact>
           <CustomerInfo />
         </Route>
         <Route path="/Menu" exact>
           <PizzaList pizzaListRefreshCall={fetchPizza} />
         </Route>
-        <Route path="/checkout">
+        <Route path="/Checkout">
           <Checkout pizzaListRefreshCall={fetchPizza} />
         </Route>
         <Footer />
         </main>
-        <Route path="/admin" exact>
+        <Route path="/Admin" exact>
           <Admin />
         </Route>
       </Router>

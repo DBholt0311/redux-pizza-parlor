@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
+import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
 function CustomerInfo() {
   const dispatch = useDispatch();
 
@@ -61,33 +67,21 @@ function CustomerInfo() {
     <div>
       <h1>Step 2 Customer Information</h1>
       <p>total</p>
-      <form onSubmit={(event) => addCustomer(event)}>
-        <input onChange={handleNameChange} placeholder="Name" id="name" />
-        <input
-          onChange={handleAddressChange}
-          placeholder="Street Address"
-          id="address"
+      <FormGroup>
+      <input onChange={handleNameChange} placeholder="Name" id="name" />
+      <input
+        onChange={handleAddressChange}
+        placeholder="Street Address"
+        id="address"
         />
-        <input onChange={handleCityChange} placeholder="City" id="city" />
-        <input onChange={handleZipChange} placeholder="Zip" id="zip" />
-        <input
-          type="checkbox"
-          onChange={handleTypeDelivery}
-          id="delivery"
-          name="delivery"
-        />
-        <label for="delivery">Delivery</label>
-        <input
-          type="checkbox"
-          onChange={handleTypePickup}
-          id="pickup"
-          name="pickup"
-        />
-        <label for="pickup">Pickup</label>
-        <button type="submit">
-          <Link to="/checkout">Next</Link>
-        </button>
-      </form>
+      <input onChange={handleCityChange} placeholder="City" id="city" />
+      <input onChange={handleZipChange} placeholder="Zip" id="zip" />
+      <FormControlLabel required control={<Checkbox onChange={handleTypeDelivery}/>} label="Delivery" />
+      <FormControlLabel required control={<Checkbox onChange={handleTypePickup}/>} label="Pickup" />      
+      <Button type="submit" onClick={(event) => addCustomer(event)}>
+        Next
+      </Button>
+      </FormGroup>
     </div>
   );
 }
