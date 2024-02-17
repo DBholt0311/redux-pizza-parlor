@@ -13,13 +13,21 @@ function PizzaList() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (pizza) => {
+    let addPizza = {
+      ...pizza,
+      quantity: 1,
+    };
     setCart([...cart, pizza]);
-    dispatch({ type: 'ADD_TO_CART', payload: pizza });
+    dispatch({ type: 'ADD_TO_CART', payload: addPizza });
   };
 
   const removeFromCart = (pizzaToRemove) => {
+    let subPizza = {
+      ...pizzaToRemove,
+      quantity: 0,
+    };
     setCart(cart.filter((item) => item !== pizzaToRemove));
-    dispatch({ type: 'REMOVE_FROM_CART', payload: pizzaToRemove });
+    dispatch({ type: 'REMOVE_FROM_CART', payload: subPizza });
   };
 
   // const totalCostCalculation = () => {
