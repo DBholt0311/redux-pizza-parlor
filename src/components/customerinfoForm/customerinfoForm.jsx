@@ -1,10 +1,18 @@
-
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 function CustomerInfo() {
+  let [customerToAdd, setCustomerToAdd] = useState({
+    name: '',
+    address: '',
+    city: '',
+    zip: 0,
+    type: '',
+  });
   const dispatch = useDispatch();
-  
-  let [customerToAdd, setCustomerToAdd] = useState({ name: '', address: '', city: '', zip: 0, type: ''})
+  const history = useHistory();
+
   const handleNameChange = (event) => {
     setCustomerToAdd({
       ...customerToAdd,
@@ -35,22 +43,22 @@ function CustomerInfo() {
   const handleTypeDelivery = (event) => {
     setCustomerToAdd({
       ...customerToAdd,
-      type: "delivery",
+      type: 'delivery',
     });
   };
 
   const handleTypePickup = (event) => {
     setCustomerToAdd({
       ...customerToAdd,
-      type: "pickup",
+      type: 'pickup',
     });
   };
 
   const addCustomer = () => {
     console.log(customerToAdd);
-    dispatch({ type: "CUSTOMER_TO_ADD", payload: customerToAdd});
+    dispatch({ type: 'CUSTOMER_TO_ADD', payload: customerToAdd });
+    history.push('/checkout');
   };
-
 
   return (
     <div>
@@ -65,10 +73,20 @@ function CustomerInfo() {
         />
         <input onChange={handleCityChange} placeholder="City" id="city" />
         <input onChange={handleZipChange} placeholder="Zip" id="zip" />
-        <input type="checkbox" onChange={handleTypeDelivery} id="delivery" name="delivery" />
-        <label for="delivery">Delivery</label>        
-        <input type="checkbox" onChange={handleTypePickup} id="pickup" name="pickup" />
-        <label for="pickup">Pickup</label>        
+        <input
+          type="checkbox"
+          onChange={handleTypeDelivery}
+          id="delivery"
+          name="delivery"
+        />
+        <label for="delivery">Delivery</label>
+        <input
+          type="checkbox"
+          onChange={handleTypePickup}
+          id="pickup"
+          name="pickup"
+        />
+        <label for="pickup">Pickup</label>
         <button type="submit">Next</button>
       </form>
     </div>

@@ -15,10 +15,9 @@ function PizzaListItem({ pizza, addToCart, removeFromCart, inCart }) {
       ...pizza,
       quantity: 1,
     };
-    console.log('here', newPizza);
+    console.log('jan michael', newPizza);
     addToCart(newPizza);
   };
-
   return (
     <div className="pizzaContainer">
       <div>
