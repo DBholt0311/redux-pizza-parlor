@@ -7,9 +7,9 @@ import { useHistory } from 'react-router-dom';
 function PizzaList() {
   const dispatch = useDispatch();
   const history = useHistory();
-  //removed the pizzaRefreshCallback due to not needed. Cart is using useState
   let pizzaList = useSelector((store) => store.pizza);
   let totalCostReducer = useSelector((store) => store.totalCostReducer);
+
   const [cart, setCart] = useState([]);
 
   const addToCart = (pizza) => {
@@ -17,38 +17,30 @@ function PizzaList() {
       ...pizza,
       quantity: 1,
     };
-    setCart([...cart, pizza]);
-    dispatch({ type: 'ADD_TO_CART', payload: addPizza });
+    setCart([...cart, addPizza]);
+    dispatch({ type: 'ADD_TO_CART', payload: pizza });
+    console.log('new new new', addPizza);
   };
 
   const removeFromCart = (pizzaToRemove) => {
-    let subPizza = {
-      ...pizzaToRemove,
-      quantity: 0,
-    };
     setCart(cart.filter((item) => item !== pizzaToRemove));
-    dispatch({ type: 'REMOVE_FROM_CART', payload: subPizza });
-  };
 
-  // const totalCostCalculation = () => {
-  //   let totalCost = 0;
-  //   cart.forEach((item) => {
-  //     totalCost += parseFloat(item.price);
-  //   });
-  //   return totalCost.toFixed(2);
-  // };
+    dispatch({ type: 'REMOVE_FROM_CART', payload: pizzaToRemove });
+  };
 
   const submitPizza = () => {
     dispatch({
       type: 'ADD_PIZZA',
-      payload: cart,
+      payload: { cart },
     });
     history.push('/customerInfo');
   };
 
+  console.log('this is it!!!!!!', cart);
+
   return (
     <div className="pizzaCardContainer">
-      {pizzaList.map((pizza, index) => (
+      {pizzaList.map((pizza, index, newcart) => (
         <PizzaListItem
           key={index}
           pizza={pizza}
@@ -57,8 +49,7 @@ function PizzaList() {
           inCart={cart.includes(pizza)}
         />
       ))}
-      {/* <div className="totalCost">Total Cost: ${totalCostReducer.totalCost}</div>{' '}
-      Accessing totalCostReducer.totalCost */}
+
       <button type="submit" onClick={submitPizza}>
         Next
       </button>
