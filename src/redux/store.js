@@ -29,6 +29,10 @@ const customerInfo = (state = [], action) => {
 };
 
 const totalCostReducer = (state = { totalCost: 0.0 }, action) => {
+  if (action.type === 'CLEAR_ORDER') {
+    return { ...state, totalCost: action.payload };
+  }
+
   switch (action.type) {
     case 'ADD_TO_CART':
       return {

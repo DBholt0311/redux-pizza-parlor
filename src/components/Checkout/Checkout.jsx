@@ -26,6 +26,18 @@ function Checkout() {
 
     dispatch({ type: 'POST_ORDER', payload: orderCheckout });
 
+    setOrderCheckout({
+      customer_name: '',
+      street_address: '',
+      city: '',
+      zip: '',
+      type: '',
+      total: '',
+      pizzas: '',
+    });
+
+    dispatch({ type: 'CLEAR_ORDER', payload: 0 });
+
     history.push('/');
   };
 
