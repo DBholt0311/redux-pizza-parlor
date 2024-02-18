@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 
 import styles from './Checkout.module.css';
 
@@ -28,8 +27,19 @@ function Checkout() {
 
     dispatch({ type: 'POST_ORDER', payload: orderCheckout });
 
+    setOrderCheckout({
+      customer_name: '',
+      street_address: '',
+      city: '',
+      zip: '',
+      type: '',
+      total: '',
+      pizzas: '',
+    });
+
+    dispatch({ type: 'CLEAR_ORDER', payload: 0 });
+
     history.push('/');
-    
   };
 
   return (
@@ -41,7 +51,9 @@ function Checkout() {
       <h2>Step 3: Checkout</h2>
       <p>{customerInfo.name}</p>
       <p>{customerInfo.address}</p>
-      <p>{customerInfo.city}, {customerInfo.zip}</p>
+      <p>
+        {customerInfo.city}, {customerInfo.zip}
+      </p>
       <p>{customerInfo.type}</p>
       {cart.map((cart) => {
         return (
