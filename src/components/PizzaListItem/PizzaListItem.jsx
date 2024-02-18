@@ -26,8 +26,8 @@ function PizzaListItem({ pizza, addToCart, removeFromCart, inCart }) {
     <div className="pizzaContainer">
       <Box>
         <img src={pizza.image_path} alt={pizza.name} />
-        <h3>{pizza.name}</h3>
-        {pizza.description}
+        <h3 className="pizzaName">{pizza.name}</h3>
+        <p className="pizzaInfo">{pizza.description}</p>
         <p className="price">Price: {pizza.price} </p>
         <Button
           className="cartToggle"
