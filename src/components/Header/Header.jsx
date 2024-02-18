@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+
 import styles from './Header.module.css';
 
 function Header({ title }) {
+  let totalCostReducer = useSelector((store) => store.totalCostReducer);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.appTopper}>
@@ -14,6 +18,9 @@ function Header({ title }) {
           <Link to="/Menu">Menu</Link>
         </li>
       </ul>
+      <div className={styles.totalCostHeader}>
+        Total Cost: {totalCostReducer.totalCost}
+      </div>{" "}
     </div>
   );
 }

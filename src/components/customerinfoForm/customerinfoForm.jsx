@@ -11,9 +11,7 @@ import FormGroup from "@mui/material/FormGroup";
 import styles from "./customerInfoForm.module.css";
 
 function CustomerInfo() {
-  let totalCostReducer = useSelector((store) => store.totalCostReducer);
   const dispatch = useDispatch();
-
   let [customerToAdd, setCustomerToAdd] = useState({
     name: "",
     address: "",
@@ -70,9 +68,6 @@ function CustomerInfo() {
   return (
     <div>
       <h1>Step 2 Customer Information</h1>
-      <div className={styles.totalCostHeader}>
-        Total Cost: {totalCostReducer.totalCost}
-      </div>{" "}
       <FormGroup className={styles.CustomerInfo}>
         <input
           onChange={handleNameChange}
