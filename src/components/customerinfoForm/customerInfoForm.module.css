@@ -1,5 +1,21 @@
 .totalCostHeader {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+  float: right, top;
+  margin-right: 10px;
+}
+
+.customerInfo {
+  text-align: center;
+  background-color: #f6d33c;
+  height: 100%;
+  width: 100%;
+}
+
+.input {
+  width: 40%;
+  margin: 5px;
+}
+
+.radioButtons {
+  margin-left: 5px;
+}
+

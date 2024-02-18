@@ -72,17 +72,33 @@ function CustomerInfo() {
       <h1>Step 2 Customer Information</h1>
       <div className={styles.totalCostHeader}>
         Total Cost: {totalCostReducer.totalCost}
-      </div>{' '}
-      <FormGroup>
-        <input onChange={handleNameChange} placeholder="Name" id="name" />
+      </div>{" "}
+      <FormGroup className={styles.CustomerInfo}>
+        <input
+          onChange={handleNameChange}
+          placeholder="Name"
+          id="name"
+          className={styles.input}
+        />
         <input
           onChange={handleAddressChange}
           placeholder="Street Address"
           id="address"
+          className={styles.input}
         />
-        <input onChange={handleCityChange} placeholder="City" id="city" />
-        <input onChange={handleZipChange} placeholder="Zip" id="zip" />
-        <RadioGroup>
+        <input
+          onChange={handleCityChange}
+          placeholder="City"
+          id="city"
+          className={styles.input}
+        />
+        <input
+          onChange={handleZipChange}
+          placeholder="Zip"
+          id="zip"
+          className={styles.input}
+        />
+        <RadioGroup className={styles.radioButtons}>
           <FormControlLabel
             value="female"
             control={<Radio onChange={handleTypeDelivery} />}
@@ -95,7 +111,7 @@ function CustomerInfo() {
           />
         </RadioGroup>
         <Button type="submit" onClick={(event) => addCustomer(event)}>
-        <Link to="/Checkout">Next</Link>
+          <Link to="/Checkout">Next</Link>
         </Button>
       </FormGroup>
     </div>

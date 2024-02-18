@@ -8,13 +8,13 @@
   background-color: #3b4095;
   color: #d0dfea;
   text-transform: uppercase;
-  text-align: left;
 }
 
 .appTopper h1 {
   margin: 0 0 0.2em 0;
   font-size: 1rem;
   line-height: 1.2;
+  float: center;
 }
 
 .subtitle {
