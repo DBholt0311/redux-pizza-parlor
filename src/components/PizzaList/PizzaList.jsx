@@ -18,34 +18,36 @@ function PizzaList() {
       quantity: 1,
     };
     setCart([...cart, addPizza]);
-    dispatch({ type: 'ADD_TO_CART', payload: pizza });
-    console.log('new new new', addPizza);
+    dispatch({ type: 'ADD_TO_CART', payload: addPizza });
   };
 
   const removeFromCart = (pizzaToRemove) => {
-    setCart(cart.filter((item) => item !== pizzaToRemove));
+    let subPizza = {
+      ...pizzaToRemove,
+      quantity: 1,
+    };
+    setCart(cart.filter((item) => item !== subPizza));
 
-    dispatch({ type: 'REMOVE_FROM_CART', payload: pizzaToRemove });
+    dispatch({ type: 'REMOVE_FROM_CART', payload: subPizza });
   };
 
   const submitPizza = () => {
     dispatch({
       type: 'ADD_PIZZA',
-      payload: { cart },
+      payload: cart,
     });
     history.push('/customerInfo');
   };
 
-  console.log('this is it!!!!!!', cart);
-
   return (
     <div className="pizzaCardContainer">
-      {pizzaList.map((pizza, index, newcart) => (
+      {pizzaList.map((pizza, index) => (
         <PizzaListItem
           key={index}
           pizza={pizza}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          // inCart={cart.some((item) => item.id === pizza.id)}
           inCart={cart.includes(pizza)}
         />
       ))}
