@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
+import styles from './Checkout.module.css';
+
 function Checkout() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,24 +39,24 @@ function Checkout() {
       </header>
 
       <h2>Step 3: Checkout</h2>
-      <p>
-        {customerInfo.name}, {customerInfo.address},{customerInfo.city},
-        {customerInfo.zip},{customerInfo.type}
-      </p>
+      <p>{customerInfo.name}</p>
+      <p>{customerInfo.address}</p>
+      <p>{customerInfo.city}, {customerInfo.zip}</p>
+      <p>{customerInfo.type}</p>
       {cart.map((cart) => {
         return (
           <div>
             <table>
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th className={styles.name}>Name</th>
                   <th>Cost</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
-                  <td>{cart.name}</td>
+                  <td className={styles.name}>{cart.name}</td>
                   <td>{cart.price}</td>
                 </tr>
               </tbody>
